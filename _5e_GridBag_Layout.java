@@ -1,60 +1,49 @@
 import java.awt.*;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
 public class _5e_GridBag_Layout {
-    private Frame f;
-    private Label headerLabel;
-    private Panel controlPanel;
 
     public _5e_GridBag_Layout() {
-        f = new Frame("Java GridBagDemo");
-        f.setSize(400, 400);
-        f.setLayout(new GridLayout(3, 1));
-        headerLabel = new Label();
-        headerLabel.setAlignment(Label.CENTER);
-        controlPanel = new Panel();
-        controlPanel.setLayout(new FlowLayout());
-        f.add(headerLabel);
-        f.add(controlPanel);
-        f.setVisible(true);
-    }
+        JFrame f = new JFrame("GridBag Demo");
+        f.setLayout(new GridBagLayout());
 
-    private void showGridBagLayoutDemo() {
-        headerLabel.setText("Layout in action: GridBagLayout");
-        Panel panel = new Panel();
-        // panel.setBackground(Color.darkGray);
-        panel.setSize(300, 300);
-        panel.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        JButton b1 = new JButton("Button 1");
+        JButton b2 = new JButton("Button 2");
+        JButton b3 = new JButton("Button 3");
+        JButton b4 = new JButton("Button 4");
+        JButton b5 = new JButton("Button 5");
 
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 0; 
-        gbc.gridy = 0;
-        panel.add(new Button("Button 1"), gbc);
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        panel.add(new Button("Button 2"), gbc);
+        GridBagConstraints gc = new GridBagConstraints();
 
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.ipady = 20; // y-axis padding
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        panel.add(new Button("Button 3"), gbc);
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        panel.add(new Button("Button 4"), gbc);
+        gc.gridx = 0;
+        gc.gridy = 0;
+        f.add(b1,gc);
 
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.gridwidth = 2;
-        panel.add(new Button("Button 5"), gbc);
+        gc.gridx = 1;
+        gc.gridy = 0;
+        f.add(b2,gc);
 
-        controlPanel.add(panel);
+        gc.gridx = 0;
+        gc.gridy = 1;
+        f.add(b3,gc);
+
+        gc.gridx = 1;
+        gc.gridy = 1;
+        f.add(b4,gc);
+
+        gc.fill = GridBagConstraints.HORIZONTAL;
+        gc.gridx = 0;
+        gc.gridy = 2;
+        gc.gridwidth = 2;
+        f.add(b5,gc);
+
+        f.setSize(600, 600);
         f.setVisible(true);
     }
 
     public static void main(String[] args) {
-        _5e_GridBag_Layout gridLayoutDemo = new _5e_GridBag_Layout();
-        gridLayoutDemo.showGridBagLayoutDemo();
+        new _5e_GridBag_Layout();
     }
 }
